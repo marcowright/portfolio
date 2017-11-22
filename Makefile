@@ -20,4 +20,7 @@ publish:
 	@mkdir -p /tmp/_web_build
 	@cd build && cp -R * /tmp/_web_build
 	@git checkout gh-pages
+	@rm -r *
 	@mv /tmp/_web_build/* ./
+	@git add -A && git commit -m 'Update site'
+	@git checkout master
