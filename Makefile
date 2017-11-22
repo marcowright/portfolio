@@ -1,4 +1,4 @@
-.PHONY: build
+.PHONY: install debug build serve publish
 
 default: build
 
