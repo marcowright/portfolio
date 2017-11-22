@@ -2,6 +2,9 @@
 
 default: build
 
+install:
+	@cd .pkg && npm install
+
 debug:
 	@cd .pkg && ./.pug
 
