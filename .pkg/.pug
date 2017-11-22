@@ -1,0 +1,21 @@
+#!/usr/bin/env node
+const pug = require('pug')
+const fs = require('fs')
+
+const srcPath = '../src/view'
+
+const renderPug = function(write=false) {
+  arrayOfFiles = fs.readdirSync(`${srcPath}`)
+  let html, filename, extension
+  arrayOfFiles.forEach(function(pugFile) {
+    [filename, extension] = pugFile.split('.')
+    html = pug.renderFile(`${srcPath}/${pugFile}`, { pretty: true })
+    if (write === true) {
+      fs.writeFileSync(`../build/${filename}.html`, html)
+    } else { console.log(html) }
+  })
+}
+
+if (process.argv.length > 2 && process.argv[2] === "build") {
+  renderPug(true)
+} else { renderPug() }
